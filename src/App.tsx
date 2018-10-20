@@ -1,9 +1,12 @@
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import * as React from "react";
+import { ApolloProvider } from "react-apollo";
 import "./App.css";
 
-const client = new ApolloClient({
+import { ArticleList } from "./application/ArticleList";
+
+const lendroitBlogGQPClient = new ApolloClient({
   uri: "http://localhost:3000/graphql"
 });
 
@@ -15,22 +18,22 @@ const query = gql`
   }
 `;
 
-client.query({ query }).then(console.warn);
+lendroitBlogGQPClient.query({ query }).then(console.warn);
 
-import logo from "./logo.svg";
+import logo from "./rubber-duck-icon.png";
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      <ApolloProvider client={lendroitBlogGQPClient}>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to LEndroit</h1>
+          </header>
+          <ArticleList />
+        </div>
+      </ApolloProvider>
     );
   }
 }
