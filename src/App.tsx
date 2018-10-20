@@ -6,8 +6,13 @@ import "./App.css";
 
 import { ArticleList } from "./application/ArticleList";
 
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "localhost:3000"
+    : "https://lendroit-blog.herokuapp.com";
+
 const lendroitBlogGQPClient = new ApolloClient({
-  uri: "http://localhost:3000/graphql"
+  uri: `${baseUrl}/graphql`
 });
 
 const query = gql`
