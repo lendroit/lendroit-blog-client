@@ -8,7 +8,7 @@ import { ArticleList } from "./application/ArticleList";
 
 const baseUrl =
   process.env.NODE_ENV === "development"
-    ? "localhost:3000"
+    ? "http://localhost:3000"
     : "https://lendroit-blog.herokuapp.com";
 
 const lendroitBlogGQPClient = new ApolloClient({
