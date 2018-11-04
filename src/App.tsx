@@ -46,8 +46,10 @@ class App extends React.Component {
                 </header>
               </nav>
 
-              <Route path="/articles" exact={true} component={ArticleList} />
-              <Route path={"/articles/:id"} component={Article} />
+              <div className="App-content-wrap">
+                <Route path="/articles" exact={true} component={ArticleList} />
+                <Route path={"/articles/:id"} component={Article} />
+              </div>
             </div>
           </Router>
         </div>

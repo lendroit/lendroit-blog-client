@@ -26,39 +26,37 @@ interface IProps {
 export class ArticleList extends React.PureComponent<IProps> {
   public render() {
     return (
-      <div className="main-content-wrap">
-        <Query query={articlesQuery}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              return <p>Loading...</p>;
-            }
-            if (error) {
-              return <p>Error :(</p>;
-            }
+      <Query query={articlesQuery}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return <p>Loading...</p>;
+          }
+          if (error) {
+            return <p>Error :(</p>;
+          }
 
-            return data.articles.map(({ name, id }: IArticle) => (
-              <div className="Article-container" key={id}>
-                <Link
-                  className="Article-link"
-                  to={`${this.props.match.url}/${id}`}
-                >
-                  <h3>{`${name}`}</h3>
-                </Link>
-                <div>
-                  <time className="time-metadata"> November 8, 2018 </time>
-                </div>
-                <img
-                  className="Article-image"
-                  src={`https://picsum.photos/600/200/?image=${Math.floor(
-                    id * Math.random() * 100
-                  )}`}
-                  alt=""
-                />
+          return data.articles.map(({ name, id }: IArticle) => (
+            <div className="Article-container" key={id}>
+              <Link
+                className="Article-link"
+                to={`${this.props.match.url}/${id}`}
+              >
+                <h3>{`${name}`}</h3>
+              </Link>
+              <div>
+                <time className="time-metadata"> November 8, 2018 </time>
               </div>
-            ));
-          }}
-        </Query>
-      </div>
+              <img
+                className="Article-image"
+                src={`https://picsum.photos/600/200/?image=${Math.floor(
+                  id * Math.random() * 100
+                )}`}
+                alt=""
+              />
+            </div>
+          ));
+        }}
+      </Query>
     );
   }
 }
