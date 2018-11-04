@@ -3,6 +3,7 @@ import * as React from "react";
 import { Query } from "react-apollo";
 import * as ReactMarkdown from "react-markdown";
 import { match } from "react-router";
+import "./github-markdown.css";
 
 const articleQuery = gql`
   query GetArticleById($articleId: Int!) {
@@ -32,7 +33,12 @@ export class Article extends React.PureComponent<IProps> {
             return <p>Error :(</p>;
           }
 
-          return <ReactMarkdown source={data.article.content} />;
+          return (
+            <ReactMarkdown
+              className="markdown-body"
+              source={data.article.content}
+            />
+          );
         }}
       </Query>
     );
