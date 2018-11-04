@@ -49,7 +49,9 @@ export class ArticleList extends React.PureComponent<IProps> {
                 </div>
                 <img
                   className="Article-image"
-                  src="https://picsum.photos/600/200/?random"
+                  src={`https://picsum.photos/600/200/?image=${Math.floor(
+                    id * Math.random() * 100
+                  )}`}
                   alt=""
                 />
               </div>
