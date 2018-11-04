@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import * as React from "react";
 import { Query } from "react-apollo";
+import { Link, match } from "react-router-dom";
 import "./ArticleList.css";
 
 interface IArticle {
@@ -17,7 +18,11 @@ const articleQuery = gql`
   }
 `;
 
-export class ArticleList extends React.PureComponent {
+interface IProps {
+  match: match;
+}
+
+export class ArticleList extends React.PureComponent<IProps> {
   public render() {
     return (
       <div className="main-content-wrap">
@@ -32,13 +37,20 @@ export class ArticleList extends React.PureComponent {
 
             return data.articles.map(({ articleName, articleId }: IArticle) => (
               <div className="Article-container" key={articleId}>
-                <h3>
-                  <a>{`${articleName}`}</a>
-                </h3>
+                <Link
+                  className="Article-link"
+                  to={`${this.props.match.url}/${articleId}`}
+                >
+                  <h3>{`${articleName}`}</h3>
+                </Link>
                 <div>
                   <time className="time-metadata"> November 8, 2018 </time>
                 </div>
-                <img className="Article-image" src="https://picsum.photos/600/200/?random" alt="" />
+                <img
+                  className="Article-image"
+                  src="https://picsum.photos/600/200/?random"
+                  alt=""
+                />
               </div>
             ));
           }}

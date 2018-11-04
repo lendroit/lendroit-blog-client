@@ -4,6 +4,9 @@ import * as React from "react";
 import { ApolloProvider } from "react-apollo";
 import "./App.css";
 
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+
+import { Article } from "./application/Article";
 import { ArticleList } from "./application/ArticleList";
 
 const baseUrl =
@@ -32,11 +35,21 @@ class App extends React.Component {
     return (
       <ApolloProvider client={lendroitBlogGQPClient}>
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to L'Endroit</h1>
-          </header>
-          <ArticleList />
+          <Router>
+            <div>
+              <nav>
+                <header className="App-header">
+                  <Link to="/articles">
+                    <img src={logo} className="App-logo" alt="logo" />
+                  </Link>
+                  <h1 className="App-title">Welcome to L'Endroit</h1>
+                </header>
+              </nav>
+
+              <Route path="/articles" exact={true} component={ArticleList} />
+              <Route path={"/articles/:id"} component={Article} />
+            </div>
+          </Router>
         </div>
       </ApolloProvider>
     );
