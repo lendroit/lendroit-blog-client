@@ -1,7 +1,7 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 import ArticlePreview from "../components/ArticlePreview";
-import * as styles from "./blog.module.css";
+import "./blog.module.css";
 
 class BlogIndex extends React.Component {
   public render() {
@@ -11,7 +11,7 @@ class BlogIndex extends React.Component {
     return (
       <div style={{ background: "#fff" }}>
         <Helmet title={siteTitle} />
-        <div className={styles.hero}>Blog</div>
+        <div className="hero">Blog</div>
         <div className="wrapper">
           <h2 className="section-headline">Recent articles</h2>
           <ul className="article-list">

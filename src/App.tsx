@@ -25,7 +25,7 @@ const query = gql`
 
 lendroitBlogGQPClient.query({ query }).then(console.warn);
 
-import logo from "./rubber-duck-icon.png";
+import logo from "./lendroit-duck.jpeg";
 
 class App extends React.Component {
   public render() {
@@ -34,7 +34,7 @@ class App extends React.Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to LEndroit</h1>
+            <h1 className="App-title">Welcome to L'Endroit</h1>
           </header>
           <ArticleList />
         </div>

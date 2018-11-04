@@ -1,0 +1,15 @@
+.main-content-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+}
+
+.time-metadata {
+  color: grey;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.Article-image {
+  padding: 5px 0;
+}
