@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+import { DateTime } from "luxon";
 import * as React from "react";
 import { Query } from "react-apollo";
 import { Link, match } from "react-router-dom";
@@ -7,6 +8,7 @@ import "./ArticleList.css";
 interface IArticle {
   id: number;
   name: string;
+  createdAt: string;
 }
 
 const articlesQuery = gql`
@@ -15,6 +17,7 @@ const articlesQuery = gql`
       id: id
       name: name
       content: content
+      createdAt: createdAt
     }
   }
 `;
@@ -22,6 +25,14 @@ const articlesQuery = gql`
 interface IProps {
   match: match;
 }
+
+const articleCreatedAt = (createdAt: string) => {
+  console.log(createdAt);
+  const displayDate = DateTime.fromMillis(parseInt(createdAt, 0)).toFormat(
+    "dd MMMM, yyyy"
+  );
+  return displayDate;
+};
 
 export class ArticleList extends React.PureComponent<IProps> {
   public render() {
@@ -35,7 +46,7 @@ export class ArticleList extends React.PureComponent<IProps> {
             return <p>Error :(</p>;
           }
 
-          return data.articles.map(({ name, id }: IArticle) => (
+          return data.articles.map(({ name, id, createdAt }: IArticle) => (
             <div className="Article-container" key={id}>
               <Link
                 className="Article-link"
@@ -44,7 +55,9 @@ export class ArticleList extends React.PureComponent<IProps> {
                 <h3>{`${name}`}</h3>
               </Link>
               <div>
-                <time className="time-metadata"> November 8, 2018 </time>
+                <time className="time-metadata">
+                  {articleCreatedAt(createdAt)}
+                </time>
               </div>
               <img
                 className="Article-image"
