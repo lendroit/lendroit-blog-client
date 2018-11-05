@@ -4,7 +4,9 @@ import { Query } from "react-apollo";
 import { Link, match } from "react-router-dom";
 import { getDisplayDate } from "../utils/getDisplayDate";
 import { getRandomColor } from "../utils/getRandomColor";
+import { getRandomIcon } from "../utils/getRandomIcon";
 import "./ArticleList.css";
+import "./icomoonStyle.css";
 
 interface IArticle {
   id: number;
@@ -40,30 +42,35 @@ export class ArticleList extends React.PureComponent<IProps> {
           }
 
           return data.articles.map(
-            ({ name, id, createdAt }: IArticle, index: number) => (
-              <Link
-                key={id}
-                className="Article-container"
-                style={{
-                  backgroundColor: getRandomColor(),
-                  flexDirection: index % 2 ? "row" : "row-reverse"
-                }}
-                to={`${this.props.match.url}/${id}`}
-              >
-                <div className="Article-semi-container" />
-                <div className="Article-semi-container">
-                  <div
-                    className="Article-name"
-                    style={{ color: getRandomColor() }}
-                  >
-                    <span>{`${name}`}</span>
+            ({ name, id, createdAt }: IArticle, index: number) => {
+              const textColor = getRandomColor();
+              return (
+                <Link
+                  key={id}
+                  className="Article-container"
+                  style={{
+                    backgroundColor: getRandomColor(),
+                    flexDirection: index % 2 ? "row" : "row-reverse"
+                  }}
+                  to={`${this.props.match.url}/${id}`}
+                >
+                  <div className="Article-semi-container">
+                    <span
+                      style={{ fontSize: "10em", color: textColor }}
+                      className={getRandomIcon()}
+                    />
                   </div>
-                  <time className="time-metadata" style={{ display: "none" }}>
-                    {getDisplayDate(createdAt)}
-                  </time>
-                </div>
-              </Link>
-            )
+                  <div className="Article-semi-container">
+                    <div className="Article-name" style={{ color: textColor }}>
+                      <span>{`${name}`}</span>
+                    </div>
+                    <time className="time-metadata" style={{ display: "none" }}>
+                      {getDisplayDate(createdAt)}
+                    </time>
+                  </div>
+                </Link>
+              );
+            }
           );
         }}
       </Query>
