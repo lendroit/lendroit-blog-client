@@ -4,10 +4,22 @@
   font-size: 0.8em;
 }
 
-.Article-image {
-  padding: 5px 0;
+.Article-container {
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
 }
 
-.Article-link {
-  color: black;
+.Article-semi-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1em;
+}
+
+.Article-name {
+  font-size: 4em;
+  font-weight: 900;
 }

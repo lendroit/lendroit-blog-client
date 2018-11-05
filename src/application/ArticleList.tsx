@@ -1,14 +1,19 @@
 import gql from "graphql-tag";
-import { DateTime } from "luxon";
 import * as React from "react";
 import { Query } from "react-apollo";
 import { Link, match } from "react-router-dom";
+import { getDisplayDate } from "../utils/getDisplayDate";
+import { getRandomColor } from "../utils/getRandomColor";
 import "./ArticleList.css";
 
 interface IArticle {
   id: number;
   name: string;
   createdAt: string;
+}
+
+interface IProps {
+  match: match;
 }
 
 const articlesQuery = gql`
@@ -22,18 +27,6 @@ const articlesQuery = gql`
   }
 `;
 
-interface IProps {
-  match: match;
-}
-
-const articleCreatedAt = (createdAt: string) => {
-  console.log(createdAt);
-  const displayDate = DateTime.fromMillis(parseInt(createdAt, 0)).toFormat(
-    "dd MMMM, yyyy"
-  );
-  return displayDate;
-};
-
 export class ArticleList extends React.PureComponent<IProps> {
   public render() {
     return (
@@ -46,28 +39,32 @@ export class ArticleList extends React.PureComponent<IProps> {
             return <p>Error :(</p>;
           }
 
-          return data.articles.map(({ name, id, createdAt }: IArticle) => (
-            <div className="Article-container" key={id}>
+          return data.articles.map(
+            ({ name, id, createdAt }: IArticle, index: number) => (
               <Link
-                className="Article-link"
+                key={id}
+                className="Article-container"
+                style={{
+                  backgroundColor: getRandomColor(),
+                  flexDirection: index % 2 ? "row" : "row-reverse"
+                }}
                 to={`${this.props.match.url}/${id}`}
               >
-                <h3>{`${name}`}</h3>
+                <div className="Article-semi-container" />
+                <div className="Article-semi-container">
+                  <div
+                    className="Article-name"
+                    style={{ color: getRandomColor() }}
+                  >
+                    <span>{`${name}`}</span>
+                  </div>
+                  <time className="time-metadata" style={{ display: "none" }}>
+                    {getDisplayDate(createdAt)}
+                  </time>
+                </div>
               </Link>
-              <div>
-                <time className="time-metadata">
-                  {articleCreatedAt(createdAt)}
-                </time>
-              </div>
-              <img
-                className="Article-image"
-                src={`https://picsum.photos/600/200/?image=${Math.floor(
-                  id * Math.random() * 100
-                )}`}
-                alt=""
-              />
-            </div>
-          ));
+            )
+          );
         }}
       </Query>
     );
