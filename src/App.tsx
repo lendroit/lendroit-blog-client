@@ -28,6 +28,7 @@ const query = gql`
 
 lendroitBlogGQPClient.query({ query }).then(console.warn);
 
+import { Home } from "./application/pages/Home";
 import logo from "./lendroit-duck.jpeg";
 
 class App extends React.Component {
@@ -42,11 +43,11 @@ class App extends React.Component {
                   <Link to="/articles">
                     <img src={logo} className="App-logo" alt="logo" />
                   </Link>
-                  <h1 className="App-title">Welcome to L'Endroit</h1>
                 </header>
               </nav>
 
               <div className="App-content-wrap">
+                <Route path="/" exact={true} component={Home} />
                 <Route path="/articles" exact={true} component={ArticleList} />
                 <Route path={"/articles/:id"} component={Article} />
               </div>
