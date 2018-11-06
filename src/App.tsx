@@ -36,7 +36,7 @@ class App extends React.Component {
     return (
       <ApolloProvider client={lendroitBlogGQPClient}>
         <div className="App">
-          <Router>
+          <Router basename={`${process.env.PUBLIC_URL}/#`}>
             <div>
               <nav>
                 <header className="App-header">
