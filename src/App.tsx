@@ -40,8 +40,14 @@ class App extends React.Component {
             <div>
               <nav>
                 <header className="App-header">
-                  <Link to="/articles">
+                  <Link to="/articles" >
                     <img src={logo} className="App-logo" alt="logo" />
+                  </Link>
+                  <Link to="/articles" >
+                    <img src={logo} className="App-logo" style={{animationDelay: '2s'}} alt="logo" />
+                  </Link>
+                  <Link to="/articles" >
+                    <img src={logo} className="App-logo" style={{animationDelay: '4s'}} alt="logo" />
                   </Link>
                 </header>
               </nav>
