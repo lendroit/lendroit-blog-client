@@ -2,7 +2,9 @@
   /* text-align: center; */
 }
 
-@keyframes App-logo-spin {
+/* rename and fix left for mobile */
+
+@keyframes duck-slider {
   0% {
     left: -15%;
   }
@@ -12,7 +14,7 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 6s linear;
+  animation: duck-slider infinite 6s linear;
   height: 10em;
   position: absolute;
   left: -15%;

@@ -3,14 +3,14 @@ import * as React from "react";
 import { Query } from "react-apollo";
 import * as ReactMarkdown from "react-markdown";
 import { match } from "react-router";
-import { getRandomColor } from '../utils/getRandomColor';
+import { getRandomColor } from "../utils/getRandomColor";
 import "./Article.css";
 import "./github-markdown.css";
 
 const getRandomPadding = () => {
-  const padding = Math.floor(Math.random()*500)
-  return `${padding}px`
-}
+  const padding = Math.floor(Math.random() * 500);
+  return `${padding}px`;
+};
 
 const articleQuery = gql`
   query GetArticleById($articleId: Int!) {
@@ -41,12 +41,17 @@ export class Article extends React.PureComponent<IProps> {
           }
 
           return (
-            <div className="Article-content" style={{padding: `0 ${getRandomPadding()}`, color: getRandomColor()}}>
-
-                  <ReactMarkdown
-                    className="markdown-body"
-                    source={data.article.content}
-                    />
+            <div
+              className="Article-content"
+              style={{
+                color: getRandomColor(),
+                padding: `0 ${getRandomPadding()}`
+              }}
+            >
+              <ReactMarkdown
+                className="markdown-body"
+                source={data.article.content}
+              />
             </div>
           );
         }}
