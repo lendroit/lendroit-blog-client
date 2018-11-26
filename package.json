@@ -2,7 +2,7 @@
   "name": "lendroit-blog-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lendroit.github.io/lendroit-blog-client",
+  "homepage": "http://blog.lendro.it",
   "dependencies": {
     "apollo-boost": "^0.1.16",
     "axios": "^0.18.0",
