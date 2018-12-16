@@ -29,7 +29,7 @@ export class Article extends React.PureComponent<IProps> {
       >
         {({ loading, error, data }) => {
           if (loading) {
-            return <p>Loading...</p>;
+            return <p>Don't look. croute.</p>;
           }
           if (error) {
             return <p>Error :(</p>;
