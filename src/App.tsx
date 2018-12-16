@@ -2,6 +2,7 @@ import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import * as React from "react";
 import { ApolloProvider } from "react-apollo";
+import { BrowserView, MobileView } from "react-device-detect";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "./App.css";
 import { Article } from "./application/Article";
@@ -37,27 +38,36 @@ class App extends React.Component {
           <Router basename={`${process.env.PUBLIC_URL}/#`}>
             <div>
               <nav>
-                <header className="App-header">
-                  <Link to="/articles">
-                    <img src={logo} className="App-logo" alt="logo" />
-                  </Link>
-                  <Link to="/articles">
-                    <img
-                      src={logo}
-                      className="App-logo"
-                      style={{ animationDelay: "2s" }}
-                      alt="logo"
-                    />
-                  </Link>
-                  <Link to="/articles">
-                    <img
-                      src={logo}
-                      className="App-logo"
-                      style={{ animationDelay: "4s" }}
-                      alt="logo"
-                    />
-                  </Link>
-                </header>
+                <BrowserView>
+                  <header className="App-header">
+                    <Link to="/articles">
+                      <img src={logo} className="App-logo" alt="logo" />
+                    </Link>
+                    <Link to="/articles">
+                      <img
+                        src={logo}
+                        className="App-logo"
+                        style={{ animationDelay: "2s" }}
+                        alt="logo"
+                      />
+                    </Link>
+                    <Link to="/articles">
+                      <img
+                        src={logo}
+                        className="App-logo"
+                        style={{ animationDelay: "4s" }}
+                        alt="logo"
+                      />
+                    </Link>
+                  </header>
+                </BrowserView>
+                <MobileView>
+                  <header className="App-header" style={{ display: "flex" }}>
+                    <Link to="/articles">
+                      <img src={logo} className="App-logo-mobile" alt="logo" />
+                    </Link>
+                  </header>
+                </MobileView>
               </nav>
 
               <div className="App-content-wrap">

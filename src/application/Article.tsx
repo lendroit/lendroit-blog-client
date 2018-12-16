@@ -7,11 +7,6 @@ import { getRandomColor } from "../utils/getRandomColor";
 import "./Article.css";
 import "./github-markdown.css";
 
-const getRandomPadding = () => {
-  const padding = Math.floor(Math.random() * 500);
-  return `${padding}px`;
-};
-
 const articleQuery = gql`
   query GetArticleById($articleId: Int!) {
     article(id: $articleId) {
@@ -34,7 +29,7 @@ export class Article extends React.PureComponent<IProps> {
       >
         {({ loading, error, data }) => {
           if (loading) {
-            return <p>Loading...</p>;
+            return <p>Don't look. croute.</p>;
           }
           if (error) {
             return <p>Error :(</p>;
@@ -45,7 +40,7 @@ export class Article extends React.PureComponent<IProps> {
               className="Article-content"
               style={{
                 color: getRandomColor(),
-                padding: `0 ${getRandomPadding()}`
+                padding: `0 10`
               }}
             >
               <ReactMarkdown

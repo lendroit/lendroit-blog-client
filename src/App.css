@@ -20,6 +20,10 @@
   left: -15%;
 }
 
+.App-logo-mobile {
+  height: 10em;
+}
+
 .App-header {
   background-color: #ffffff;
   padding: 1em;
