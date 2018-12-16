@@ -13,7 +13,7 @@ import logo from "./lendroit-duck.jpeg";
 
 const baseUrl =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
+    ? "https://lendroit-blog.herokuapp.com"
     : "https://lendroit-blog.herokuapp.com";
 
 const lendroitBlogGQPClient = new ApolloClient({
