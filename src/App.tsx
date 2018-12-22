@@ -51,14 +51,17 @@ class App extends React.Component {
                         alt="logo"
                       />
                     </Link>
-                    <Link to="/articles">
+                    <a href="https://www.instagram.com/lendro.it/">
                       <img
                         src={logo}
                         className="App-logo"
-                        style={{ animationDelay: "4s" }}
+                        style={{
+                          animationDelay: "4s",
+                          transform: "rotate(180deg)"
+                        }}
                         alt="logo"
                       />
-                    </Link>
+                    </a>
                   </header>
                 </BrowserView>
                 <MobileView>

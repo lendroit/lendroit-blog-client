@@ -9,9 +9,9 @@ export class Home extends React.PureComponent {
         <Link to="/articles">
           <h3>articles</h3>
         </Link>
-        <Link to="/lifestyle">
+        <a href="https://www.instagram.com/lendro.it/">
           <h3>lifestyle</h3>
-        </Link>
+        </a>
       </React.Fragment>
     );
   }
